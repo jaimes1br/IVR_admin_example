@@ -1,0 +1,9 @@
+<div class="container-fluid p-3 bg-dark">
+    <div class="row justify-content-end">
+        <div *ngIf="isHome" class="col-2 mx-2">
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Search">
+        </div>      
+        <button *ngIf="isStoreAdd && tabValue === 'opc1'" class="btn btn-success col-2 mx-2">Add Store</button>
+        <button *ngIf="isStoreAdd && tabValue === 'opc2'" class="btn btn-warning col-2 mx-2">Add New</button>
+    </div>
+</div>
