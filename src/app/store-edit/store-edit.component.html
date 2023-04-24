@@ -1,4 +1,15 @@
 <div class="container my-5">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': tabValue === 'opc1'}" (click)="onTabChange('opc1')" #tabOpc1>Opc 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active': tabValue === 'opc2'}" (click)="onTabChange('opc2')" #tabOpc2>Opc2</a>
+    </li>
+  </ul>
+</div>
+
+<div class="container my-5">
     <form>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email address</label>

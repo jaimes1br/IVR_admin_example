@@ -14,7 +14,7 @@ import { StoreEditComponent } from './store-edit/store-edit.component';
     HeaderComponent,
     StoreListComponent,
     StoreAddComponent,
-    StoreEditComponent
+    StoreEditComponent,
   ],
   imports: [
     BrowserModule,

@@ -29,6 +29,7 @@ export class StoreAddComponent implements OnInit {
 
   onTabChange(opc: string){
     this.tabValue = opc;
+    console.log('click on ' + this.tabValue);
     this.storeAddService.setTabsValues(opc)
   }
 
