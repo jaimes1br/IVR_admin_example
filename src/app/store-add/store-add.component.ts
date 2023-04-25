@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StoreAddService } from '../services/store-add.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreEditService } from '../services/store-edit.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-store-add',
@@ -10,9 +11,14 @@ import { StoreEditService } from '../services/store-edit.service';
 })
 export class StoreAddComponent implements OnInit {
   
-  tabValue: string = 'opc1'
   id: string = ''
   name: string = '';
+  subTabs!: Subscription;
+
+  activeTab: 'tabGreetings' | 'tabOverride' = 'tabGreetings';
+
+  @ViewChild('tabOpc1') tabOpc1!: any;
+  @ViewChild('tabOpc2') tabOpc2!: any;
 
   constructor(private storeAddService: StoreAddService, 
               private activatedRoute:ActivatedRoute, 
@@ -25,16 +31,22 @@ export class StoreAddComponent implements OnInit {
       this.id = e['id'];
       this.name = e ['name'];
     })
+
+    this.subTabs = this.storeAddService.tabs$.subscribe(tab => {
+      this.activeTab = tab;    
+    })
   }
 
-  onTabChange(opc: string){
-    this.tabValue = opc;
-    console.log('click on ' + this.tabValue);
-    this.storeAddService.setTabsValues(opc)
-  }
-
+ 
   onGoToEdit(){
     this.storeEditService.saveDataToBack({id: this.id,name: this.name});
+    this.storeAddService.setTabsValues(this.activeTab);
     this.router.navigate(['/storeEdit']);
+  }
+
+  onGoToEditOverride(){
+    this.storeEditService.saveDataToBack({id: this.id,name: this.name});
+    this.storeAddService.setTabsValues(this.activeTab);
+    this.router.navigate(['/storeOverride']);  
   }
 }

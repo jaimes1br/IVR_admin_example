@@ -6,12 +6,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class StoreAddService {
 
-  tabsSubject = new BehaviorSubject<string>('opc1');
-  tabs$: Observable<string> = this.tabsSubject.asObservable();
+  tabsSubject = new BehaviorSubject<'tabGreetings' | 'tabOverride'>('tabGreetings');
+  tabs$: Observable<'tabGreetings' | 'tabOverride'> = this.tabsSubject.asObservable();
 
   constructor() { }
 
-  setTabsValues(tab: string){
+  setTabsValues(tab: 'tabGreetings' | 'tabOverride'){
     this.tabsSubject.next(tab);
   }
    

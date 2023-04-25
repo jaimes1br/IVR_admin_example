@@ -1,41 +1,61 @@
 <div class="container my-5">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active': tabValue === 'opc1'}" (click)="onTabChange('opc1')">Opc 1</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [ngClass]="{'active': tabValue === 'opc2'}" (click)="onTabChange('opc2')">Opc2</a>
-    </li>
-  </ul>
-</div>
-
-<div class="container">
-  <h4>{{ id }}</h4>
-  <h4>{{ name }}</h4>
-</div>
-
-<div class="container p-4">
-    <h1>Store-add</h1>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td><button (click)="onGoToEdit()" class="btn btn-info">Edit</button></td>
-          </tr>
-        </tbody>
-      </table>
-</div>
-
-<div class="container">
-  <button type="button" class="btn btn-primary" [routerLink]="['/']">Back</button>
+  <h3>Store Tabs</h3>
+  <div class="tabs-container">
+    <ul class="tabs-nav">
+      <li class="tabs-item" role="tab" [tabIndex]="activeTab === 'tabGreetings' ? 0 : -1"
+        [ngClass]="{'tabs-item--active': activeTab === 'tabGreetings'}" (click)="activeTab = 'tabGreetings'">
+        Greetings
+      </li>
+      <li class="tabs-item" role="tab" [tabIndex]="activeTab === 'tabOverride' ? 0 : -1"
+        [ngClass]="{'tabs-item--active': activeTab === 'tabOverride'}" (click)="activeTab = 'tabOverride'">
+        Override
+      </li>
+    </ul>
+  </div>
+  <div class="py-2">
+    <div *ngIf="activeTab === 'tabGreetings'; else tabOverride">
+      <div class="d-flex flex-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td><button (click)="onGoToEdit()" class="btn btn-info">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <ng-template #tabOverride>
+      <div class="d-flex flex-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Other</td>
+              <td>Otto</td>
+              <td><button (click)="onGoToEditOverride()" class="btn btn-info">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </div>
 </div>

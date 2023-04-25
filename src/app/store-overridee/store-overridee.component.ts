@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreEditService } from '../services/store-edit.service';
-import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 import { StoreAddService } from '../services/store-add.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-store-edit',
-  templateUrl: './store-edit.component.html',
-  styleUrls: ['./store-edit.component.sass']
+  selector: 'app-store-overridee',
+  templateUrl: './store-overridee.component.html',
+  styleUrls: ['./store-overridee.component.sass']
 })
-export class StoreEditComponent implements OnInit {
+export class StoreOverrideeComponent implements OnInit {
 
   sub!: Subscription;
   subTabs!: Subscription;
@@ -37,8 +37,10 @@ export class StoreEditComponent implements OnInit {
     this.storeEditService.saveDataToBack({id: '', name: ''});
   }
   
-  ngOnDestroy(): void {    
+  ngOnDestroy(): void {
     if( this.sub ) this.sub.unsubscribe();
     if( this.subTabs ) this.subTabs.unsubscribe();
   }
+  
+  
 }

@@ -7,6 +7,7 @@ import { StoreListComponent } from './store-list/store-list.component';
 import { StoreAddComponent } from './store-add/store-add.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreEditComponent } from './store-edit/store-edit.component';
+import { StoreOverrideeComponent } from './store-overridee/store-overridee.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { StoreEditComponent } from './store-edit/store-edit.component';
     StoreListComponent,
     StoreAddComponent,
     StoreEditComponent,
+    StoreOverrideeComponent,
   ],
   imports: [
     BrowserModule,
