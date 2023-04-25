@@ -3,11 +3,11 @@
   <div class="tabs-container">
     <ul class="tabs-nav">
       <li class="tabs-item" role="tab" [tabIndex]="activeTab === 'tabGreetings' ? 0 : -1"
-        [ngClass]="{'tabs-item--active': activeTab === 'tabGreetings'}" (click)="activeTab = 'tabGreetings'">
+        [ngClass]="{'tabs-item--active': activeTab === 'tabGreetings'}" (click)="onTabChange('tabGreetings')">
         Greetings
       </li>
       <li class="tabs-item" role="tab" [tabIndex]="activeTab === 'tabOverride' ? 0 : -1"
-        [ngClass]="{'tabs-item--active': activeTab === 'tabOverride'}" (click)="activeTab = 'tabOverride'">
+        [ngClass]="{'tabs-item--active': activeTab === 'tabOverride'}" (click)="onTabChange('tabOverride')">
         Override
       </li>
     </ul>

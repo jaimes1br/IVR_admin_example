@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   
   isHome: boolean = true;
   isStoreAdd: boolean = false;
-  tabValue = 'opc';
+  activeTab: 'tabGreetings' | 'tabOverride' = 'tabGreetings';
 
   sub!: Subscription; 
 
@@ -25,10 +25,10 @@ export class HeaderComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((url: any) => {
         this.setElementsHeader(url?.url)
-      });
+    });
 
     this.sub = this.storeAddService.tabs$.subscribe(tabActive => {
-      this.tabValue = tabActive;    
+      this.activeTab = tabActive;    
     })
   }
 
@@ -39,6 +39,9 @@ export class HeaderComponent implements OnInit {
     }else if( url.includes('/storeAdd')){
       this.isHome = false;
       this.isStoreAdd = true;    
+    }else if( url.includes('/storeOverride') || url.includes('/storeEdit')){
+      this.isHome = false;
+      this.isStoreAdd = false;
     }
   }
 

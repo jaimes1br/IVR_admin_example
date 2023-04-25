@@ -36,7 +36,10 @@ export class StoreAddComponent implements OnInit {
       this.activeTab = tab;    
     })
   }
-
+  onTabChange(tab: 'tabGreetings' | 'tabOverride' ){
+    this.activeTab = tab;
+    this.storeAddService.setTabsValues(this.activeTab)
+  }
  
   onGoToEdit(){
     this.storeEditService.saveDataToBack({id: this.id,name: this.name});
