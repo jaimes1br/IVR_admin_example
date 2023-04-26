@@ -8,6 +8,8 @@ import { StoreAddComponent } from './store-add/store-add.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreEditComponent } from './store-edit/store-edit.component';
 import { StoreOverrideeComponent } from './store-overridee/store-overridee.component';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { StoreOverrideeComponent } from './store-overridee/store-overridee.compo
     StoreOverrideeComponent,
   ],
   imports: [
+    CommonModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],

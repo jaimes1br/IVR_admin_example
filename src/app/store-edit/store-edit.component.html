@@ -1,4 +1,4 @@
-<div class="container my-5">
+<div class="container my-5" *ngIf="!isLoading; else Loading">
   <h3>Store add - greetings</h3>
   <div class="tabs-container">
     <ul class="tabs-nav">
@@ -43,3 +43,7 @@
     </ng-template>
   </div>
 </div>
+
+<ng-template #Loading>
+  <h1>Loading...</h1>
+</ng-template>
