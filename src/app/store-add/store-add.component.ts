@@ -3,6 +3,7 @@ import { StoreAddService } from '../services/store-add.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreEditService } from '../services/store-edit.service';
 import { Subscription } from 'rxjs';
+import { StoreApiGetService } from '../services/store-api-get.service';
 
 @Component({
   selector: 'app-store-add',
@@ -23,6 +24,7 @@ export class StoreAddComponent implements OnInit {
   constructor(private storeAddService: StoreAddService, 
               private activatedRoute:ActivatedRoute, 
               private storeEditService: StoreEditService,
+              private storeApiGetService:StoreApiGetService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -41,9 +43,10 @@ export class StoreAddComponent implements OnInit {
     this.storeAddService.setTabsValues(this.activeTab)
   }
  
-  onGoToEdit(){
+  onGoToEdit({ id }: {id:string} ){
     this.storeEditService.saveDataToBack({id: this.id,name: this.name});
     this.storeAddService.setTabsValues(this.activeTab);
+    this.storeApiGetService.setStoreGreetingToEdit(id);
     this.router.navigate(['/storeEdit']);
   }
 

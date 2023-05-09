@@ -54,6 +54,11 @@ export class StoreEditComponent implements OnInit {
       this.isLoading = false;
       //En este momento llamas a la funcion para setear el form
     })
+
+    this.storeApiGetService.getAllElementsToEdit().subscribe(resp => {
+      console.log('edit');
+      console.log(resp);
+    })
   }
 
   onGoToBack(){
